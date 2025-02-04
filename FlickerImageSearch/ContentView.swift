@@ -86,7 +86,6 @@ struct PhotoDetailView: View {
     var body: some View {
         ScrollView {
             VStack {
-                // Image
                 AsyncImage(url: photo.media.m) { image in
                     image.resizable().scaledToFit()
                 } placeholder: {
