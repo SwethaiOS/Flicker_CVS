@@ -72,7 +72,14 @@ class PhotoDetailViewTests: XCTestCase {
     func testFormattedDate_emptyDate() {
         // Given
         let emptyDateString = ""
-        
+        let photoDetailView = PhotoDetailView(photo:PhotoItem(
+            id: "http://example.com/image.jpg",
+            title: "Test Image",
+            description: "A beautiful photo",
+            author: "John Doe",
+            published: "",
+            media: PhotoItem.Media(m: URL("http://example.com/image.jpg")!)
+        ))
         // When
         let formattedDate = photoDetailView.formattedDate(emptyDateString)
         

@@ -20,7 +20,7 @@ struct SearchView: View {
                     .onChange(of: searchText) { newValue in
                         viewModel.searchQuery = newValue
                     }
-                    
+                
                 if viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -67,7 +67,7 @@ struct ImageThumbnailView: View {
             }
             .frame(width: 200, height: 200)
             }.buttonStyle(PlainButtonStyle())
-                                
+            
             NavigationLink(destination: PhotoDetailView(photo: image)) {
                 Text(image.title)
                     .font(.caption)
@@ -112,28 +112,28 @@ struct PhotoDetailView: View {
                 Text("Published on: \(formattedDate(photo.published))")
                     .font(.subheadline)
                     .padding()
-               
+                
             }
             .navigationTitle(photo.title)
         }
     }
     
-        public func formattedDate(_ dateString: String?) -> String {
-            guard let dateString = dateString, !dateString.isEmpty else {
-                return "No date available"
-            }
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-            
-            guard let date = formatter.date(from: dateString) else {
-                return ""
-            }
-            
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .short
-            return formatter.string(from: date)
+    public func formattedDate(_ dateString: String?) -> String {
+        guard let dateString = dateString, !dateString.isEmpty else {
+            return "No date available"
         }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        
+        guard let date = formatter.date(from: dateString) else {
+            return ""
+        }
+        
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
 }
 
 
